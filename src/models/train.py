@@ -82,15 +82,17 @@ def train_yolov8_pcb_defect():
         data=str(data_yaml),           # Path to dataset config
         epochs=50,                      # Number of training epochs
         imgsz=640,                      # Input image size (640x640)
-        batch=16,                       # Batch size per GPU
+        batch=4,                       # Batch size per GPU
         device=device,                  # Use GPU if available
         name='pcb_defect_yolov8n',     # Experiment name
         patience=10,                    # Early stopping patience
         save=True,                      # Save checkpoints and best model
         plots=True,                     # Generate training plots
         verbose=True,                   # Detailed logging
-        workers=4,                      # Data loading workers
-        seed=42                         # For reproducibility
+        workers=0,                      # Data loading workers
+        seed=42,                        # For reproducibility
+        mosaic=0.0,                     # disable mosaic augmentation
+        mixup=0.0                       # disable mixup augmentation
     )
     
     print("-" * 70)
