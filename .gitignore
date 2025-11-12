@@ -1,0 +1,40 @@
+# Data and models (NEVER commit these)
+data/
+mlruns/
+runs/
+models/*.pt
+models/*.pth
+*.weights
+
+# Python environment (NEVER commit)
+venv/
+.venv/
+env/
+.Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API Keys
+**/api_key.txt
+
