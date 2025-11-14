@@ -1,0 +1,12 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+data/raw/train/
+data/raw/valid/
+notebooks/
+.ipynb_checkpoints/
+mlruns/
+*.log
