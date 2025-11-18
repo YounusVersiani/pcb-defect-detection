@@ -34,7 +34,7 @@ A robust FastAPI service wraps the detector with a clear REST API.
 
 - **Live API:**  
   [https://pcb-defect-detection-6moo.onrender.com](https://pcb-defect-detection-6moo.onrender.com)  
-  - Interactive docs available at `/docs`
+  - Interactive docs available at: [https://pcb-defect-detection-6moo.onrender.com/docs](https://pcb-defect-detection-6moo.onrender.com/docs)
 
 ### Core Endpoints
 
@@ -44,6 +44,57 @@ A robust FastAPI service wraps the detector with a clear REST API.
   Service health and model status.
 - `GET /docs`  
   Interactive Swagger (OpenAPI) documentation.
+
+### How to Test the API Using Swagger UI
+
+1. **Navigate to the interactive documentation:**  
+   [https://pcb-defect-detection-6moo.onrender.com/docs](https://pcb-defect-detection-6moo.onrender.com/docs)
+
+2. **Locate the `POST /predict` endpoint** and click to expand it.
+
+3. **Click "Try it out"** button in the top-right corner of the endpoint section.
+
+4. **Upload your PCB image:**
+   - Click "Choose File" next to the `file` parameter
+   - Select a PCB image from your local machine
+   - The filename will appear once selected
+
+5. **Click "Execute"** to run inference.
+   - Note: Inference typically takes 20-30 seconds on the free-tier Render deployment
+
+6. **View Results:**
+   - Scroll down to the "Response body" section
+   - JSON response includes:
+     - `num_detections`: Total number of defects found
+     - `detections`: Array of detected defects with:
+       - `class_name`: Defect type classification
+       - `confidence`: Detection confidence score
+       - `bounding_box`: Spatial coordinates of the defect
+
+#### Example Response Format
+
+```json
+{
+  "filename": "pcb_sample.jpg",
+  "image_size": {"width": 640, "height": 480},
+  "num_detections": 2,
+  "confidence_threshold": 0.5,
+  "detections": [
+    {
+      "class_id": 0,
+      "class_name": "defect_1",
+      "confidence": 0.94,
+      "bounding_box": {"x1": 120, "y1": 85, "x2": 195, "y2": 140}
+    },
+    {
+      "class_id": 3,
+      "class_name": "defect_4",
+      "confidence": 0.89,
+      "bounding_box": {"x1": 310, "y1": 220, "x2": 380, "y2": 275}
+    }
+  ]
+}
+```
 
 #### Example: Inference via Python
 
@@ -103,3 +154,4 @@ Located in the `notebooks/` directory.
 
 MIT License.  
 Key technologies: YOLOv8 (Ultralytics), FastAPI, Docker, Render.
+
